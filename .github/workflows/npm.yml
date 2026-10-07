@@ -83,9 +83,17 @@ jobs:
           echo "Version $VERSION -> dist-tag $TAG"
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
 
-      - name: Release to npm
+      # Il trusted publisher su npm ha solo il permesso di stage publish: la CI
+      # mette la versione in coda e un maintainer la approva con 2FA (da
+      # npmjs.com -> Staged Packages, o `npm stage approve <id>`). Un `publish`
+      # diretto verrebbe rifiutato con "OIDC permission denied for this action".
+      # `npm stage` richiede npm >= 11.15, pnpm non lo supporta.
+      - name: Install npm with staged publishing support
+        run: npm install -g npm@^11.15.0
+
+      - name: Stage release on npm
         working-directory: frontend/packages/volto-searchblocks
-        run: pnpm publish --provenance --access public --no-git-checks --tag "${{ steps.npm-tag.outputs.tag }}"
+        run: npm stage publish --provenance --access public --tag "${{ steps.npm-tag.outputs.tag }}"
 
       - name: Dump npm debug log on failure
         if: failure()

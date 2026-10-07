@@ -165,6 +165,11 @@ starts two GitHub workflows, `pypi.yml` (backend to PyPI) and `npm.yml`
 publishing (OIDC). No PyPI or npm token is needed locally; `GITHUB_TOKEN` is
 optional, only to create the GitHub release.
 
+The frontend is **staged**, not published: the new version goes live on npm
+only after a maintainer approves it with 2FA, from npmjs.com (package →
+*Staged Packages*) or with `npm stage list volto-searchblocks` and
+`npm stage approve <stage-id>`.
+
 The npm dist-tag comes from the version: `1.0.0-alpha.1` goes to `alpha`,
 `1.0.0` to `latest`.
 
@@ -178,8 +183,9 @@ Both registries must trust the workflows of `collective/collective-searchblocks`
 
 - **npm**: on the `volto-searchblocks` package, Settings → *Trusted Publisher* →
   GitHub Actions, repository `collective/collective-searchblocks`, workflow
-  `npm.yml`, with the publish permission enabled. `make bootstrap-npm` prints
-  the exact values (the package already exists, so it does not publish again).
+  `npm.yml`, with only the *stage publish* permission enabled (a direct
+  publish from CI is then refused). `make bootstrap-npm` prints the exact
+  values (the package already exists, so it does not publish again).
 - **PyPI**: on the `collective.searchblocks` project, *Publishing* → add a
   GitHub publisher with repository `collective/collective-searchblocks` and
   workflow `pypi.yml`.
