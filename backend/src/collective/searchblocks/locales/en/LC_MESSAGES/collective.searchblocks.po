@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-27 12:21+0000\n"
+"POT-Creation-Date: 2026-10-07 12:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: DOMAIN\n"
+"Domain: collective.searchblocks\n"
 
 #: collective/searchblocks/profiles.zcml:22
 msgid "Create example content to showcase the new website"
@@ -20,6 +20,10 @@ msgstr ""
 
 #: collective/searchblocks/profiles.zcml:13
 msgid "Package to configure a new Search blocks site"
+msgstr ""
+
+#: collective/searchblocks/profiles/default/actions.xml
+msgid "Search blocks"
 msgstr ""
 
 #: collective/searchblocks/profiles.zcml:22

@@ -1,4 +1,5 @@
 from collective.searchblocks import PACKAGE_NAME
+from plone import api
 
 import pytest
 
@@ -17,3 +18,8 @@ class TestSetupUninstall:
         from collective.searchblocks.interfaces import IBrowserLayer
 
         assert IBrowserLayer not in browser_layers
+
+    def test_user_action_removed(self, portal):
+        """Test that the user menu no longer links to the search blocks page."""
+        actions = api.portal.get_tool("portal_actions")
+        assert "collective-searchblocks" not in actions.user

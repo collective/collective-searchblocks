@@ -6,6 +6,7 @@ A comprehensive Plone add-on that provides search functionality for content usin
 
 - **Block Search Endpoint**: RESTful API endpoint (`/@search-blocks`) for searching content by block types
 - **Security**: Permission-based access control for the search API
+- **User menu link**: A `collective-searchblocks` user action, listed only to the users with the `collective.searchblocks: Search Blocks` permission, that Volto shows in the toolbar user menu
 - **Catalog Integration**: Uses Plone's catalog for efficient searching
 - **Metadata Support**: Returns rich metadata including title, type, review state, creation and modification dates
 - **Pagination**: Support for batched results with configurable page sizes

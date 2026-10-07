@@ -11,11 +11,6 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. Default: "Back to Control Panel"
-#: components/SearchBlocks/SearchBlocks
-msgid "Back to Control Panel"
-msgstr ""
-
 #. Default: "Block Type"
 #: components/SearchBlocks/SearchBlocks
 msgid "Block Type"
@@ -29,6 +24,11 @@ msgstr ""
 #. Default: "Created"
 #: components/SearchBlocks/SearchBlocks
 msgid "Created"
+msgstr ""
+
+#. Default: "Home"
+#: components/SearchBlocks/SearchBlocks
+msgid "Home"
 msgstr ""
 
 #. Default: "Loading..."
@@ -63,7 +63,6 @@ msgstr ""
 
 #. Default: "Search blocks"
 #: components/SearchBlocks/SearchBlocks
-#: config/settings
 msgid "Search blocks"
 msgstr ""
 

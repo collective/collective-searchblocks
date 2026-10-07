@@ -9,7 +9,7 @@ A comprehensive solution for searching and managing content that uses specific b
 ## Features ✨
 
 - **Search Blocks**: Search for content using specific block types
-- **Control Panel**: Dedicated control panel interface for searching blocks
+- **Search page**: Dedicated page for searching blocks, linked from the user menu of the toolbar
 - **Pagination**: Navigate through search results with configurable page sizes
 - **Multilingual Support**: Support for multiple languages (Italian included)
 - **Error Handling**: Comprehensive error handling and user feedback

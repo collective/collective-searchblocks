@@ -1,4 +1,5 @@
 from collective.searchblocks import PACKAGE_NAME
+from plone import api
 
 
 class TestSetupInstall:
@@ -14,4 +15,11 @@ class TestSetupInstall:
 
     def test_latest_version(self, profile_last_version):
         """Test latest version of default profile."""
-        assert profile_last_version(f"{PACKAGE_NAME}:default") == "1000"
+        assert profile_last_version(f"{PACKAGE_NAME}:default") == "1001"
+
+    def test_user_action(self, portal):
+        """Test that the user menu links to the search blocks page."""
+        actions = api.portal.get_tool("portal_actions")
+        action = actions.user["collective-searchblocks"]
+        assert action.url_expr == "string:/controlpanel/search-blocks"
+        assert action.permissions == ("collective.searchblocks: Search Blocks",)

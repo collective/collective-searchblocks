@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        meta_type="Plone Actions Tool"
+        name="portal_actions"
+>
+  <object meta_type="CMF Action Category"
+          name="user"
+          purge="False"
+  >
+    <object insert-before="logout"
+            meta_type="CMF Action"
+            name="collective-searchblocks"
+            i18n:domain="collective.searchblocks"
+    >
+      <property name="title"
+                i18n:translate=""
+      >Search blocks</property>
+      <property name="description"
+                i18n:translate=""
+      />
+      <property name="url_expr">string:/controlpanel/search-blocks</property>
+      <property name="icon_expr" />
+      <property name="available_expr">python:member is not None</property>
+      <property name="permissions">
+        <element value="collective.searchblocks: Search Blocks" />
+      </property>
+      <property name="visible">True</property>
+    </object>
+  </object>
+</object>
