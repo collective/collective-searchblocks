@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 0.3.1 (2026-10-07)
+
+### Feature
+
+- Reach the search blocks page from the user menu of the toolbar instead of the site control panel, where the "Search blocks" entry is gone. The link is shown only to the users the backend lists the `collective-searchblocks` user action for, and its label is that action's title, so it reads in the site's language. The back button of the page now leads to the site home rather than to the control panel. 
+
 ## 0.3.0 (2026-06-19)
 
 ## 0.3.0-alpha.7 (2026-04-21)

@@ -7,6 +7,32 @@
 -->
 
 <!-- towncrier release notes start -->
+## 0.3.1 (2026-10-07)
+
+### Backend
+
+
+#### New features:
+
+- Add the `collective-searchblocks` user action, listed to the users with the `collective.searchblocks: Search Blocks` permission, so that Volto can link the search page from the toolbar user menu. Its title is translated in Italian as "Blocchi nel sito". Run the upgrade step to add it to existing sites. 
+
+
+
+### Frontend
+
+#### Feature
+
+- Reach the search blocks page from the user menu of the toolbar instead of the site control panel, where the "Search blocks" entry is gone. The link is shown only to the users the backend lists the `collective-searchblocks` user action for, and its label is that action's title, so it reads in the site's language. The back button of the page now leads to the site home rather than to the control panel. 
+
+
+
+### Project
+
+No significant changes.
+
+
+
+
 ## 0.3.0 (2026-06-19)
 
 ### Backend

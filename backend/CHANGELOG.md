@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 0.3.1 (2026-10-07)
+
+
+### New features:
+
+- Add the `collective-searchblocks` user action, listed to the users with the `collective.searchblocks: Search Blocks` permission, so that Volto can link the search page from the toolbar user menu. Its title is translated in Italian as "Blocchi nel sito". Run the upgrade step to add it to existing sites. 
+
 ## 0.3.0 (2026-06-19)
 
 No significant changes.
