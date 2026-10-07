@@ -154,67 +154,35 @@ make i18n
 
 ## Release 📦
 
-To release a new version of this project, use the automated release process:
-
 ```shell
 make release
 ```
 
-### Prerequisites for Release
+It asks for the next version, then updates versions and changelogs of backend
+and frontend and creates the git tag. **It publishes nothing**: pushing the tag
+starts two GitHub workflows, `pypi.yml` (backend to PyPI) and `npm.yml`
+(frontend to npm), that run lint and tests and then publish via trusted
+publishing (OIDC). No PyPI or npm token is needed locally; `GITHUB_TOKEN` is
+optional, only to create the GitHub release.
 
-Before running the release command, set up the required environment variables and authentication:
+The npm dist-tag comes from the version: `1.0.0-alpha.1` goes to `alpha`,
+`1.0.0` to `latest`.
 
-#### 1. Set Environment Variables
+The steps are not atomic: if the tag exists but one of the two publishes
+failed, **do not release again**. Re-run the failed workflow from GitHub
+Actions ("Release latest version on PyPI" or "... on npm"), passing the tag.
 
-```bash
-# PyPI authentication
-export UV_PUBLISH_TOKEN="your-pypi-token"
+### One-off setup
 
-# GitHub (optional, for creating releases)
-export GITHUB_TOKEN="your-github-token"
-```
+Both registries must trust the workflows of `collective/collective-searchblocks`:
 
-#### 2. Verify npm Authentication
-
-```bash
-npm whoami
-```
-
-If this fails, run:
-```bash
-npm login
-```
-
-### What the Release Process Does
-
-The `make release` command automatically:
-
-1. ✅ Verifies required environment variables are set
-2. 🔧 Sets up Node.js from `.nvmrc`
-3. 🔐 Verifies npm authentication (`npm whoami`)
-4. 📦 Installs frontend dependencies (`pnpm install`)
-5. 🚀 Runs `uvx repoplone release` to:
-   - Update version numbers in both backend and frontend
-   - Update CHANGELOG files
-   - Create git tags
-   - Publish to PyPI (backend) and npm (frontend)
-   - Create GitHub releases (if `GITHUB_TOKEN` is set)
-
-### Release Workflow
-
-The release process will ask you to select the next version:
-- `a` (alpha): for pre-release versions
-- `b` (beta): for beta versions  
-- `release`: for stable versions
-
-Then it will:
-1. Update repository components (version, CHANGELOG, etc.)
-2. Release the backend package to PyPI
-3. Release the frontend package to npm
-4. Create a git tag
-5. Create a GitHub release (if configured)
-
-**Note:** The process is fully automated once started. You only need to confirm the version selection at the beginning.
+- **npm**: on the `volto-searchblocks` package, Settings → *Trusted Publisher* →
+  GitHub Actions, repository `collective/collective-searchblocks`, workflow
+  `npm.yml`, with the publish permission enabled. `make bootstrap-npm` prints
+  the exact values (the package already exists, so it does not publish again).
+- **PyPI**: on the `collective.searchblocks` project, *Publishing* → add a
+  GitHub publisher with repository `collective/collective-searchblocks` and
+  workflow `pypi.yml`.
 
 ## Credits and acknowledgements 🙏
 

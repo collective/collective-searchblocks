@@ -134,8 +134,12 @@ test:  backend-test frontend-test ## Test codebase
 # Release
 ###########################################
 .PHONY: release
-release:  ## Release new version (requires UV_PUBLISH_TOKEN and npm login)
+release:  ## Update versions and changelogs and create the tag (CI publishes the packages)
 	@bash ./scripts/release.sh
+
+.PHONY: bootstrap-npm
+bootstrap-npm:  ## One-off: login, first npm publish, trusted publisher for CI, logout
+	@bash ./scripts/bootstrap-npm.sh
 
 ###########################################
 # Container images
