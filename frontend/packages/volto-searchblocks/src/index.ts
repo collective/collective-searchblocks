@@ -1,13 +1,11 @@
 import type { ConfigType } from '@plone/registry';
-import installSettings from './config/settings';
 
 import { searchBlocks } from './actions/searchBlocks';
 import searchBlocksReducer from './reducers/searchBlocks';
 import SearchBlocks from './components/SearchBlocks/SearchBlocks';
+import ToolbarUserMenu from './components/manage/toolbar/ToolbarUserMenu';
 
 function applyConfig(config: ConfigType) {
-  installSettings(config);
-
   config.addonReducers = {
     ...config.addonReducers,
     searchBlocks: searchBlocksReducer,
@@ -18,6 +16,14 @@ function applyConfig(config: ConfigType) {
     {
       path: '/controlpanel/search-blocks',
       component: SearchBlocks,
+    },
+  ];
+  config.settings.appExtras = [
+    ...config.settings.appExtras,
+    {
+      match: '',
+      component: ToolbarUserMenu,
+      props: {},
     },
   ];
 

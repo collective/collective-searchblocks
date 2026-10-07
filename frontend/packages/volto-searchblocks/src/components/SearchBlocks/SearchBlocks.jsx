@@ -70,9 +70,9 @@ const messages = defineMessages({
     id: 'No results found for',
     defaultMessage: 'No results found for',
   },
-  backToControlPanel: {
-    id: 'Back to Control Panel',
-    defaultMessage: 'Back to Control Panel',
+  backToHome: {
+    id: 'Home',
+    defaultMessage: 'Home',
   },
   private: {
     id: 'private',
@@ -302,12 +302,12 @@ const SearchBlocks = (props) => {
             hideDefaultViewButtons
             inner={
               <>
-                <Link to="/controlpanel" className="item">
+                <Link to="/" className="item">
                   <Icon
                     name={backSVG}
                     className="contents circled"
                     size="30px"
-                    title={intl.formatMessage(messages.backToControlPanel)}
+                    title={intl.formatMessage(messages.backToHome)}
                   />
                 </Link>
               </>

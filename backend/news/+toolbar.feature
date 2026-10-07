@@ -1,0 +1,1 @@
+Add the `collective-searchblocks` user action, listed to the users with the `collective.searchblocks: Search Blocks` permission, so that Volto can link the search page from the toolbar user menu. Its title is translated in Italian as "Blocchi nel sito". Run the upgrade step to add it to existing sites.

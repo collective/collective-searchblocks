@@ -12,11 +12,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 
-#. Default: "Back to Control Panel"
-#: components/SearchBlocks/SearchBlocks
-msgid "Back to Control Panel"
-msgstr "Torna al Pannello di Controllo"
-
 #. Default: "Block Type"
 #: components/SearchBlocks/SearchBlocks
 msgid "Block Type"
@@ -31,6 +26,11 @@ msgstr "Scegli un tipo di blocco"
 #: components/SearchBlocks/SearchBlocks
 msgid "Created"
 msgstr "Creato"
+
+#. Default: "Home"
+#: components/SearchBlocks/SearchBlocks
+msgid "Home"
+msgstr "Home"
 
 #. Default: "Loading..."
 #: components/SearchBlocks/SearchBlocks
@@ -64,7 +64,6 @@ msgstr "Stato di Revisione"
 
 #. Default: "Search blocks"
 #: components/SearchBlocks/SearchBlocks
-#: config/settings
 msgid "Search blocks"
 msgstr "Ricerca blocchi"
 
