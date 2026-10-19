@@ -24,7 +24,7 @@ msgstr ""
 
 #: collective/searchblocks/profiles/default/actions.xml
 msgid "Search blocks"
-msgstr "Blocchi nel sito"
+msgstr "Ricerca blocchi"
 
 #: collective/searchblocks/profiles.zcml:22
 msgid "Search blocks: Example content"
