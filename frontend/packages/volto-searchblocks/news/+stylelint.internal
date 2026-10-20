@@ -1,0 +1,1 @@
+Fix the order of the CSS properties flagged by stylelint, which stopped the 0.4.1 release from being published on npm. @cekk
