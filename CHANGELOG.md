@@ -7,6 +7,30 @@
 -->
 
 <!-- towncrier release notes start -->
+## 0.4.0 (2026-10-20)
+
+### Backend
+
+No significant changes.
+
+
+
+
+### Frontend
+
+#### Bugfix
+
+- Show a translated label ("Empty block (placeholder)") for the `empty` block type, the placeholder Volto gives to unfilled cells of container blocks such as the grid, instead of the raw type name. @cekk 
+
+
+
+### Project
+
+No significant changes.
+
+
+
+
 ## 0.3.1 (2026-10-07)
 
 ### Backend
