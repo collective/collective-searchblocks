@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 0.4.1 (2026-10-20)
+
+### Feature
+
+- Improve the accessibility of the search blocks page: the block type select is labelled and described for screen readers, the results table has a label and column headers scoped to their columns, and loading, the number of results and the empty result are announced as they change. Block type names in the select are now translated, as in the Volto block chooser. @cekk 
+
 ## 0.4.0 (2026-10-20)
 
 ### Bugfix
