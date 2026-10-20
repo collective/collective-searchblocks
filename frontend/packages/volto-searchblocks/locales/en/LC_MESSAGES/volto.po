@@ -26,6 +26,11 @@ msgstr ""
 msgid "Created"
 msgstr ""
 
+#. Default: "Empty block (placeholder)"
+#: components/SearchBlocks/SearchBlocks
+msgid "Empty block (placeholder)"
+msgstr ""
+
 #. Default: "Home"
 #: components/SearchBlocks/SearchBlocks
 msgid "Home"

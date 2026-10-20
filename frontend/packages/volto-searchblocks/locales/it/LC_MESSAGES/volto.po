@@ -27,6 +27,11 @@ msgstr "Scegli un tipo di blocco"
 msgid "Created"
 msgstr "Creato"
 
+#. Default: "Empty block (placeholder)"
+#: components/SearchBlocks/SearchBlocks
+msgid "Empty block (placeholder)"
+msgstr "Blocco vuoto (segnaposto)"
+
 #. Default: "Home"
 #: components/SearchBlocks/SearchBlocks
 msgid "Home"

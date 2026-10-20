@@ -94,6 +94,10 @@ const messages = defineMessages({
     id: 'draft',
     defaultMessage: 'Draft',
   },
+  emptyBlock: {
+    id: 'Empty block (placeholder)',
+    defaultMessage: 'Empty block (placeholder)',
+  },
 });
 
 const SearchBlocks = (props) => {
@@ -124,6 +128,13 @@ const SearchBlocks = (props) => {
   if (error) {
     return <Error error={error} />;
   }
+
+  // 'empty' is the placeholder @type Volto gives to unfilled container
+  // (e.g. grid) cells: it has no blocksConfig entry, so translate it here.
+  const getBlockTitle = (type) =>
+    type === 'empty'
+      ? intl.formatMessage(messages.emptyBlock)
+      : config.blocks.blocksConfig[type]?.title || type;
 
   const handleSelect = (key) => {
     setSelectedBlockType(key);
@@ -185,10 +196,7 @@ const SearchBlocks = (props) => {
               value={selectedBlockType || ''}
               onChange={(id, value) => handleSelect(value)}
               choices={
-                block_types?.map((type) => [
-                  type,
-                  config.blocks.blocksConfig[type]?.title || type,
-                ]) || []
+                block_types?.map((type) => [type, getBlockTitle(type)]) || []
               }
               wrapped={false}
               isClearable={false}
@@ -286,9 +294,7 @@ const SearchBlocks = (props) => {
                   {...messages.noResults}
                   values={{ blockType: selectedBlockType }}
                 />{' '}
-                {config.blocks.blocksConfig[selectedBlockType]?.title ||
-                  selectedBlockType}
-                .
+                {getBlockTitle(selectedBlockType)}.
               </p>
             )}
           </div>
