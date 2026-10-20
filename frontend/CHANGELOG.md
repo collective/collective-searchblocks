@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 0.4.2 (2026-10-20)
+
+### Internal
+
+- Fix the order of the CSS properties flagged by stylelint, which stopped the 0.4.1 release from being published on npm. @cekk 
+
 ## 0.4.1 (2026-10-20)
 
 ### Feature
