@@ -129,12 +129,31 @@ const SearchBlocks = (props) => {
     return <Error error={error} />;
   }
 
-  // 'empty' is the placeholder @type Volto gives to unfilled container
-  // (e.g. grid) cells: it has no blocksConfig entry, so translate it here.
-  const getBlockTitle = (type) =>
-    type === 'empty'
-      ? intl.formatMessage(messages.emptyBlock)
-      : config.blocks.blocksConfig[type]?.title || type;
+  const getBlockTitle = (type) => {
+    // 'empty' is the placeholder @type Volto gives to unfilled container
+    // (e.g. grid) cells: it has no blocksConfig entry, so translate it here.
+    if (type === 'empty') {
+      return intl.formatMessage(messages.emptyBlock);
+    }
+    const title = config.blocks.blocksConfig[type]?.title;
+    // Translate the title as the Volto block chooser does.
+    return title
+      ? intl.formatMessage({ id: title, defaultMessage: title })
+      : type;
+  };
+
+  const hasResults = !loading && items?.length > 0;
+  const hasNoResults = !loading && selectedBlockType && items?.length === 0;
+  // Announced to screen readers when the results change.
+  const statusMessage = loading
+    ? intl.formatMessage(messages.loading)
+    : hasResults
+      ? `${intl.formatMessage(messages.results)} (${total})`
+      : hasNoResults
+        ? `${intl.formatMessage(messages.noResults)} ${getBlockTitle(
+            selectedBlockType,
+          )}.`
+        : '';
 
   const handleSelect = (key) => {
     setSelectedBlockType(key);
@@ -179,14 +198,24 @@ const SearchBlocks = (props) => {
           <Header as="h1">
             <FormattedMessage {...messages.pageTitle} />
           </Header>
-          <p>
+          <p id="blocks-search-description">
             <FormattedMessage {...messages.pageDescription} />
           </p>
         </Segment>
 
         <Segment>
-          <div className="blocks-search-controls ui form">
-            <label style={{ display: 'block', marginBottom: '0.5rem' }}>
+          {/* SelectWidget does not pass aria attributes to its input, so
+              label and describe the select through the wrapping group. */}
+          <div
+            className="blocks-search-controls ui form"
+            role="group"
+            aria-labelledby="blocks-search-label"
+            aria-describedby="blocks-search-description"
+          >
+            <label
+              id="blocks-search-label"
+              style={{ display: 'block', marginBottom: '0.5rem' }}
+            >
               <FormattedMessage {...messages.selectBlockType} />
             </label>
             <SelectWidget
@@ -205,14 +234,18 @@ const SearchBlocks = (props) => {
         </Segment>
 
         <Segment>
-          <div className="blocks-search-results">
+          <div className="blocks-search-results" aria-busy={loading}>
+            <div className="blocks-search-status" role="status">
+              {statusMessage}
+            </div>
+
             {loading && (
               <Loader active inline="centered" size="medium">
                 <FormattedMessage {...messages.loading} />
               </Loader>
             )}
 
-            {!loading && items && items.length > 0 && (
+            {hasResults && (
               <>
                 <Header as="h2">
                   <FormattedMessage
@@ -221,22 +254,26 @@ const SearchBlocks = (props) => {
                   />{' '}
                   ({total})
                 </Header>
-                <Table celled striped>
+                <Table
+                  celled
+                  striped
+                  aria-label={`${intl.formatMessage(messages.results)} - ${getBlockTitle(selectedBlockType)}`}
+                >
                   <Table.Header>
                     <Table.Row>
-                      <Table.HeaderCell>
+                      <Table.HeaderCell scope="col">
                         <FormattedMessage {...messages.title} />
                       </Table.HeaderCell>
-                      <Table.HeaderCell>
+                      <Table.HeaderCell scope="col">
                         <FormattedMessage {...messages.type} />
                       </Table.HeaderCell>
-                      <Table.HeaderCell>
+                      <Table.HeaderCell scope="col">
                         <FormattedMessage {...messages.reviewState} />
                       </Table.HeaderCell>
-                      <Table.HeaderCell>
+                      <Table.HeaderCell scope="col">
                         <FormattedMessage {...messages.created} />
                       </Table.HeaderCell>
-                      <Table.HeaderCell>
+                      <Table.HeaderCell scope="col">
                         <FormattedMessage {...messages.modified} />
                       </Table.HeaderCell>
                     </Table.Row>
@@ -288,7 +325,7 @@ const SearchBlocks = (props) => {
               </>
             )}
 
-            {!loading && selectedBlockType && items.length === 0 && (
+            {hasNoResults && (
               <p>
                 <FormattedMessage
                   {...messages.noResults}
