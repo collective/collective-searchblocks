@@ -9,6 +9,11 @@
 
 <!-- towncrier release notes start -->
 
+## 0.4.3 (2026-10-21)
+
+No significant changes.
+
+
 ## 0.4.2 (2026-10-20)
 
 No significant changes.

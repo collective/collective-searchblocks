@@ -7,6 +7,29 @@
 -->
 
 <!-- towncrier release notes start -->
+## 0.4.3 (2026-10-21)
+
+### Backend
+
+No significant changes.
+
+
+
+
+### Frontend
+
+No significant changes.
+
+
+### Project
+
+
+#### Bug fixes:
+
+- Publish the frontend README to npm: the npm workflow now copies it into the package before publishing. 
+
+
+
 ## 0.4.2 (2026-10-20)
 
 ### Backend
