@@ -91,6 +91,10 @@ jobs:
       - name: Install npm with staged publishing support
         run: npm install -g npm@^11.15.0
 
+      - name: Copy the README into the package
+        working-directory: frontend/packages/volto-searchblocks
+        run: cp ../../README.md .
+
       - name: Stage release on npm
         working-directory: frontend/packages/volto-searchblocks
         run: npm stage publish --provenance --access public --tag "${{ steps.npm-tag.outputs.tag }}"
